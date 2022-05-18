@@ -8,10 +8,24 @@
   </head>
   <body>
     <input type="button" value="点击抛出错误" onclick="btnClick()" />
+    <input
+      type="button"
+      value="点击promise抛出错误"
+      onclick="promiseErrorClick()"
+    />
     <script type="module" src="/src/main.ts"></script>
     <script>
       function btnClick() {
         window.someVariable.error = 'someVariable'
+      }
+
+      function promiseErrorClick() {
+        new Promise(function (resolve, reject) {
+          // window.someVariable.error = 'someVariable'
+          reject('111')
+        }).then((result) => {
+          console.log(result)
+        })
       }
     </script>
   </body>
