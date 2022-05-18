@@ -10,5 +10,5 @@ export default (stack: string) => {
     .split('\n')
     .slice(1)
     .map((item) => item.replace(/^\s+at\s+/g, ''))
-    .join('^')
+    .join(' <--> ')
 }

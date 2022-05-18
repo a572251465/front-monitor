@@ -1,5 +1,5 @@
 import Api from '@/api'
-import { genReportData, getLastEvent, getSelector } from '@/utils'
+import { genReportData, getLastEvent, getSelector, getUserAgent } from '@/utils'
 import getLines from '@/utils/getLines'
 
 /**
@@ -17,7 +17,8 @@ const errorListener = (event: ErrorEvent) => {
     stack: getLines(event.error.stack),
     selector: lastEvent
       ? getSelector((lastEvent as any).path || lastEvent.target)
-      : ''
+      : '',
+    userAgent: getUserAgent()
   })
   Api.send(sendBody)
 }

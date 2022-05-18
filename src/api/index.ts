@@ -8,14 +8,18 @@ import types from 'where-type'
  * @param callback 上报成功的回调
  */
 const send = (logs: ISendDataBody, callback?: IFn) => {
+  console.log(logs)
   const body = JSON.stringify({
     __logs__: [logs]
   })
-  console.log(body)
 
   // 建立连接
   const xhr = new XMLHttpRequest()
-  xhr.open('POST', '', true)
+  xhr.open(
+    'POST',
+    `http://front-monitor-lihh.cn-beijing.log.aliyuncs.com/logstores/screen-offline-plus/track`,
+    true
+  )
   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
   xhr.setRequestHeader('x-log-apiversion', '0.6.0')
   xhr.setRequestHeader('x-log-bodyrawsize', `${body.length}`)

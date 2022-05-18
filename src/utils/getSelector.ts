@@ -28,7 +28,7 @@ const getSelector = (path: any[]) => {
       }
       return selector
     })
-    .join('')
+    .join(' -> ')
 }
 
 export default (paths: any[]) => {
