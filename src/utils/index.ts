@@ -11,3 +11,14 @@ export { default as getUserAgent } from './getUserAgent'
  * @returns
  */
 export const formatTime = (time: number) => `${time}`.split('.')[0]
+
+/**
+ * @author lihh
+ * @description node log 连接信息
+ */
+export const nodeLogsConnectionInfo = {
+  projectName: '',
+  host: '',
+  logStoreName: '',
+  active: false
+}
