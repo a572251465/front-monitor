@@ -1,14 +1,18 @@
 {
-  "name": "front-monitor",
-  "private": true,
-  "version": "0.0.0",
+  "name": "logs-monitor",
+  "version": "1.0.3",
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:deep": "rollup -c build/rollup.config.js",
     "preview": "vite preview"
   },
+  "module": "./dist/monitor.es.js",
+  "files": [
+    "dist",
+    "typings"
+  ],
+  "typings": "./typings/index.d.ts",
   "devDependencies": {
     "@types/node": "^17.0.34",
     "eslint": "^8.15.0",

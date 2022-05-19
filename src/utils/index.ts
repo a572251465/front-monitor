@@ -1,8 +1,13 @@
+import { IExtendData } from '@/types'
+
 export { default as genReportData } from './genReportData'
 export { default as getLastEvent } from './getLastEvent'
 export { default as genLines } from './getLines'
 export { default as getSelector } from './getSelector'
 export { default as getUserAgent } from './getUserAgent'
+
+// 表示当前的扩展类型
+let currentExtendData: IExtendData
 
 /**
  * @author lihh
@@ -22,3 +27,10 @@ export const nodeLogsConnectionInfo = {
   logStoreName: '',
   active: false
 }
+
+/**
+ * @author lihh
+ * @description 设置以及获取扩展类型
+ */
+export const getExtendData = () => currentExtendData
+export const setExtendData = (data: IExtendData) => (currentExtendData = data)

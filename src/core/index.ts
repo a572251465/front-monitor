@@ -1,16 +1,25 @@
-import { nodeLogsConnectionInfo } from '@/utils'
+import { IExtendData } from '@/types'
+import { nodeLogsConnectionInfo, setExtendData } from '@/utils'
 import { injectJsError } from './jsError'
+
+if (import.meta.env.DEV) {
+  window.__self__ = {
+    projectName: 'front-monitor-lihh',
+    logStoreName: 'screen-offline-plus',
+    host: 'cn-beijing.log.aliyuncs.com'
+  }
+}
 
 class MonitorImpl {
   public active: boolean = true
   constructor(
-    public projectName: string,
-    public host: string,
-    public logStoreName: string
+    public projectName?: string,
+    public host?: string,
+    public logStoreName?: string
   ) {
-    projectName = projectName || window.__self__.projectName
-    host = host || window.__self__.host
-    logStoreName = logStoreName || window.__self__.logStoreName
+    projectName = projectName || (window.__self__ && window.__self__.projectName)
+    host = host || (window.__self__ && window.__self__.host)
+    logStoreName = logStoreName || (window.__self__ && window.__self__.logStoreName)
 
     if (!projectName || !host || !logStoreName) {
       console.warn(
@@ -33,6 +42,15 @@ class MonitorImpl {
     if (!this.active) return
     // 监听js执行
     injectJsError()
+  }
+
+  /**
+   * @author lihh
+   * @description 设置当前扩展类型
+   * @param data 扩展的类型
+   */
+  setExtend = (data: IExtendData) => {
+    setExtendData(data)
   }
 }
 

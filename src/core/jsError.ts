@@ -15,6 +15,21 @@ import getLines from '@/utils/getLines'
  * @param event 事件对象
  */
 const errorListener = (event: ErrorEvent) => {
+  // 判断是资源错误 还是js错误
+  if (
+    event.target &&
+    ((event.target as any).src || (event.target as any).href)
+  ) {
+    const sendBody = genReportData({
+      errorType: IErrorType.ResourceError,
+      filename: (event.target as any).src || (event.target as any).href,
+      tagName: (event.target as any).tagName,
+      selector: getSelector((event as any).path || event.target)
+    })
+    Api.send(sendBody)
+    return
+  }
+
   // 获取最后一次点击事件
   const lastEvent = getLastEvent()
   const sendBody = genReportData({

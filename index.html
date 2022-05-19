@@ -28,6 +28,12 @@
           console.log(result)
         })
       }
+
+      setTimeout(() => {
+        const script = document.createElement('script')
+        script.src = './some.js'
+        document.body.append(script)
+      }, 500)
     </script>
   </body>
 </html>

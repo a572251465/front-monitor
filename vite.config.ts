@@ -6,7 +6,7 @@ const resolvePath = (...args: string[]) => path.resolve(__dirname, ...args)
 
 export default defineConfig({
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.d.ts', '.js'],
     alias: {
       '@': resolvePath('./src')
     }
@@ -15,9 +15,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolvePath('./src/core/index.ts'),
-      formats: ['iife'],
+      formats: ['iife', 'es'],
       name: 'MonitorImpl',
-      fileName: 'monitor.js'
+      fileName: 'monitor'
     }
   }
 })

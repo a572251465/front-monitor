@@ -37,4 +37,9 @@ export type ISendDataBody = MyPartial<{
   position: string
   stack: string
   selector: string
+  tagName: string
+  extendData: string
 }>
+
+// 表示扩展类型
+export type IExtendData = Record<any, any>

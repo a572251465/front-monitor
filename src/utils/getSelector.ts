@@ -31,9 +31,15 @@ const getSelector = (path: any[]) => {
     .join(' -> ')
 }
 
-export default (paths: any[]) => {
-  if (Array.isArray(paths)) {
-    return getSelector(paths)
+export default (pathsOrTarget: any[] | object) => {
+  if (Array.isArray(pathsOrTarget)) {
+    return getSelector(pathsOrTarget)
   }
-  return ''
+  const paths = []
+  let element = pathsOrTarget
+  while (element) {
+    paths.push(element)
+    element = (element as any).parentNode
+  }
+  return getSelector(paths)
 }
