@@ -1,6 +1,7 @@
 import { IExtendData } from '@/types'
 import { nodeLogsConnectionInfo, setExtendData } from '@/utils'
 import { injectJsError } from './jsError'
+import { injectXhrError } from './xhrError'
 
 if (import.meta.env.DEV) {
   window.__self__ = {
@@ -17,9 +18,11 @@ class MonitorImpl {
     public host?: string,
     public logStoreName?: string
   ) {
-    projectName = projectName || (window.__self__ && window.__self__.projectName)
+    projectName =
+      projectName || (window.__self__ && window.__self__.projectName)
     host = host || (window.__self__ && window.__self__.host)
-    logStoreName = logStoreName || (window.__self__ && window.__self__.logStoreName)
+    logStoreName =
+      logStoreName || (window.__self__ && window.__self__.logStoreName)
 
     if (!projectName || !host || !logStoreName) {
       console.warn(
@@ -42,6 +45,7 @@ class MonitorImpl {
     if (!this.active) return
     // 监听js执行
     injectJsError()
+    injectXhrError()
   }
 
   /**

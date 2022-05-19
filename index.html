@@ -13,8 +13,9 @@
       value="点击promise抛出错误"
       onclick="promiseErrorClick()"
     />
+    <input type="button" onclick="successAjax()" value="成功ajax" />
+    <input type="button" onclick="failAjax()" value="失败ajax" />
     <script type="module" src="/src/main.ts"></script>
-    <script src="./dist/monitor.js.iife.js"></script>
     <script>
       function btnClick() {
         window.someVariable.error = 'someVariable'
@@ -29,11 +30,42 @@
         })
       }
 
-      setTimeout(() => {
-        const script = document.createElement('script')
-        script.src = './some.js'
-        document.body.append(script)
-      }, 500)
+      function successAjax() {
+        let xhr = new XMLHttpRequest()
+        xhr.open(
+          'POST',
+          'https://apix.91qiancheng.cn/hpm/Home/HotIndustries',
+          true
+        )
+        xhr.responseType = 'json'
+        xhr.onload = function () {
+          console.log(xhr.response)
+        }
+        xhr.send()
+      }
+
+      function failAjax() {
+        let xhr = new XMLHttpRequest()
+        xhr.open(
+          'POST',
+          'https://apix.91qiancheng.cn/hpm/Home/HotIndustries1',
+          true
+        )
+        xhr.responseType = 'json'
+        xhr.onload = function () {
+          console.log(xhr.response)
+        }
+        xhr.onerror = function (error) {
+          console.log(error)
+        }
+        xhr.send('name=zhufeng')
+      }
+
+      // setTimeout(() => {
+      //   const script = document.createElement('script')
+      //   script.src = './some.js'
+      //   document.body.append(script)
+      // }, 500)
     </script>
   </body>
 </html>

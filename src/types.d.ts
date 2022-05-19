@@ -2,7 +2,12 @@
 export enum IErrorType {
   JsError = 'jsError',
   PromiseError = 'promiseError',
-  ResourceError = 'resourceError'
+  ResourceError = 'resourceError',
+  XhrError = 'xhrError'
+}
+
+export enum ISuccessType {
+  XhrSuccess = 'xhrSuccess'
 }
 
 // 表示错误的大分类
@@ -12,7 +17,8 @@ export enum IBigErrorType {
 
 // 表示错误的小分类
 export enum ISmallErrorType {
-  Error = 'error'
+  Error = 'error',
+  Success = 'success'
 }
 
 // 变为可选
@@ -31,7 +37,7 @@ export type ISendDataBody = MyPartial<{
   userAgent: string
   kind: IBigErrorType
   type: ISmallErrorType
-  errorType: IErrorType
+  errorType: IErrorType | '-'
   message: string
   filename: string
   position: string
@@ -39,6 +45,12 @@ export type ISendDataBody = MyPartial<{
   selector: string
   tagName: string
   extendData: string
+  eventType: string
+  pathname: string
+  status: string
+  duration: string
+  response: string
+  params: string
 }>
 
 // 表示扩展类型

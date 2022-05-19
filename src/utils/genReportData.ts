@@ -20,7 +20,7 @@ const defaultValues: ISendDataBody = {
  */
 export default (info: ISendDataBody) => {
   // 进行数据合并
-  const payload = { ...defaultValues, ...info }
+  const payload: Record<string, string> = { ...defaultValues, ...info }
 
   // 进行默认数据获取
   if (!payload.url) payload.url = window.location.href
@@ -32,5 +32,11 @@ export default (info: ISendDataBody) => {
       getExtendData() || (window.__self__ && window.__self__.extendData)
     )
   }
-  return payload
+
+  const delFieldOptions = {} as Record<string, string>
+  for (const key in payload) {
+    if (payload[key] === '-') continue
+    delFieldOptions[key] = payload[key]
+  }
+  return delFieldOptions
 }

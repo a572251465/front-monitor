@@ -1,4 +1,4 @@
-import { IExtendData } from '@/types.d'
+import { IExtendData, MyPartial } from '@/types.d'
 
 declare global {
   interface Window {
@@ -8,5 +8,17 @@ declare global {
       logStoreName: string
       extendData?: IExtendData
     }
+  }
+}
+
+declare global {
+  interface XMLHttpRequest {
+    logData: MyPartial<{
+      method: string
+      url: string
+      async: boolean
+      username: string
+      password: string
+    }>
   }
 }
