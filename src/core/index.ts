@@ -6,7 +6,7 @@ import { injectXhrError } from './xhrError'
 if (import.meta.env.DEV) {
   window.__self__ = {
     projectName: 'front-monitor-lihh',
-    logStoreName: 'screen-offline-plus',
+    logStoreName: 'logs-monitor-test',
     host: 'cn-beijing.log.aliyuncs.com'
   }
 }

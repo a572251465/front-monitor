@@ -1,5 +1,5 @@
 import Api from '@/api'
-import { IErrorType, ISmallErrorType } from '@/types'
+import { ISmallErrorType } from '@/types'
 import { genReportData, getUserAgent } from '@/utils'
 
 /**
