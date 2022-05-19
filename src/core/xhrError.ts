@@ -1,6 +1,6 @@
 import Api from '@/api'
 import { IErrorType, ISmallErrorType } from '@/types'
-import { genReportData } from '@/utils'
+import { genReportData, getUserAgent } from '@/utils'
 
 /**
  * @author lihh
@@ -52,7 +52,8 @@ export function injectXhrError() {
             status: `${status}`,
             duration: String(duration),
             response: this.response ? JSON.stringify(this.response) : '',
-            params: JSON.stringify(body) || ''
+            params: JSON.stringify(body) || '',
+            userAgent: getUserAgent()
           })
         )
       }
