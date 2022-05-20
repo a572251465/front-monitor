@@ -5,6 +5,7 @@ export { default as getLastEvent } from './getLastEvent'
 export { default as genLines } from './getLines'
 export { default as getSelector } from './getSelector'
 export { default as getUserAgent } from './getUserAgent'
+export { default as onload } from './onload'
 
 // 表示当前的扩展类型
 let currentExtendData: IExtendData

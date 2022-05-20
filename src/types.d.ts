@@ -18,7 +18,8 @@ export enum IBigErrorType {
 // 表示错误的小分类
 export enum ISmallErrorType {
   Error = 'error',
-  Success = 'success'
+  Success = 'success',
+  Blank = 'blank'
 }
 
 // 变为可选
@@ -51,6 +52,9 @@ export type ISendDataBody = MyPartial<{
   duration: string // xhr请求花费时间
   response: string // xhl响应内容
   params: string
+  emptyPoints: string // 表示空白节点
+  screen: string // 表示分辨率大小
+  viewPoint: string // 表示视口大小
 }>
 
 // 表示扩展类型

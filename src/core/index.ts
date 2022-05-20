@@ -1,5 +1,6 @@
 import { IExtendData } from '@/types'
 import { nodeLogsConnectionInfo, setExtendData } from '@/utils'
+import { blankScreen } from './blankScreen'
 import { injectJsError } from './jsError'
 import { injectXhrError } from './xhrError'
 
@@ -46,6 +47,7 @@ class MonitorImpl {
     // 监听js执行
     injectJsError()
     injectXhrError()
+    blankScreen()
   }
 
   /**
