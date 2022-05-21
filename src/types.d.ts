@@ -12,14 +12,17 @@ export enum ISuccessType {
 
 // 表示错误的大分类
 export enum IBigErrorType {
-  Stability = 'stability'
+  Stability = 'stability',
+  Experience = 'experience'
 }
 
 // 表示错误的小分类
 export enum ISmallErrorType {
   Error = 'error',
   Success = 'success',
-  Blank = 'blank'
+  Blank = 'blank',
+  Timing = 'timing',
+  Paint = 'paint'
 }
 
 // 变为可选
@@ -55,7 +58,21 @@ export type ISendDataBody = MyPartial<{
   emptyPoints: string // 表示空白节点
   screen: string // 表示分辨率大小
   viewPoint: string // 表示视口大小
+  connectTime: string // 连接时间
+  ttfbTime: string
+  responseTime: string // 响应时间
+  parseDOMTime: string // 解析dom 时间
+  domContentLoadedTime: string // dom 内容加载完成时间
+  timeToInteractive: string
+  loadTime: string
+  firstPaint: string // 首次绘制
+  firstContentPaint: string // 首页有内容绘制
+  firstMeaningfulPaint: string // 首次有意义的绘制
+  largestContentfulPaint: string // 最大内容绘制
 }>
 
 // 表示扩展类型
 export type IExtendData = Record<any, any>
+
+// 表示监控类扩展类型
+export type IMonitorExtend = MyPartial<{ wrapperSelectors?: string[] }>

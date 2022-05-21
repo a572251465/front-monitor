@@ -1,7 +1,13 @@
-import { IExtendData } from '@/types'
-import { nodeLogsConnectionInfo, setExtendData } from '@/utils'
+import { IExtendData, IMonitorExtend } from '@/types'
+import {
+  nodeLogsConnectionInfo,
+  setConstructorExtendOptions,
+  setExtendData
+} from '@/utils'
+import types from 'where-type'
 import { blankScreen } from './blankScreen'
 import { injectJsError } from './jsError'
+import { timing } from './timing'
 import { injectXhrError } from './xhrError'
 
 if (import.meta.env.DEV) {
@@ -17,7 +23,8 @@ class MonitorImpl {
   constructor(
     public projectName?: string,
     public host?: string,
-    public logStoreName?: string
+    public logStoreName?: string,
+    public options?: IMonitorExtend
   ) {
     projectName =
       projectName || (window.__self__ && window.__self__.projectName)
@@ -35,6 +42,11 @@ class MonitorImpl {
     nodeLogsConnectionInfo.host = host
     nodeLogsConnectionInfo.logStoreName = logStoreName
     nodeLogsConnectionInfo.active = true
+
+    // 设置扩展参数
+    if (options?.wrapperSelectors && types.isArray(options?.wrapperSelectors)) {
+      setConstructorExtendOptions(options!)
+    }
   }
 
   /**
@@ -48,6 +60,7 @@ class MonitorImpl {
     injectJsError()
     injectXhrError()
     blankScreen()
+    timing()
   }
 
   /**

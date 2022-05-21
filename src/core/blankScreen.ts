@@ -1,6 +1,6 @@
 import Api from '@/api'
 import { ISmallErrorType } from '@/types'
-import { genReportData, onload } from '@/utils'
+import { genReportData, getConstructorExtendOptions, onload } from '@/utils'
 
 /**
  * @author lihh
@@ -29,7 +29,11 @@ function getSelector(element: Element) {
 }
 
 export const blankScreen = () => {
-  const wrapperSelectors = ['body', 'html', '#container', '.content']
+  const wrapperSelectors = getConstructorExtendOptions().wrapperSelectors || [
+    'body',
+    'html',
+    '#app'
+  ]
   let emptyPoints = 0
 
   /**
