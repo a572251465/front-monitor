@@ -1,6 +1,6 @@
 {
   "name": "logs-monitor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "start": "vite",
     "dev": "vite",
