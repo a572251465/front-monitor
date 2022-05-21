@@ -1,6 +1,6 @@
 {
   "name": "logs-monitor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -12,6 +12,22 @@
     "dist",
     "typings"
   ],
+  "keywords": [
+    "monitor",
+    "js error",
+    "promise error",
+    "xhr error",
+    "blank screen data",
+    "web page monitor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a572251465/front-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/a572251465/front-monitor/issues"
+  },
+  "homepage": "https://github.com/a572251465/front-monitor",
   "typings": "./typings/index.d.ts",
   "devDependencies": {
     "@types/node": "^17.0.34",
